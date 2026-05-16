@@ -1,7 +1,7 @@
 # In-pod Caddy serving the Astro dist.
 # Edge TLS + tailnet IP-gate handled by host Caddy on the VPS (vps_dashboard).
 
-:80 {
+:8080 {
   root * /srv
   try_files {path} {path}.html /index.html
   file_server

@@ -1,0 +1,115 @@
+---
+import '../styles/tokens.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title?: string;
+}
+const { title = 'lab.hartle.tech' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HARTLE.TECH portfolio dashboard — products, infrastructure, knowledge, source." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+
+  <!-- FOUC-prevention: set theme BEFORE first paint -->
+  <script is:inline>
+    (function () {
+      const stored = localStorage.getItem('theme');
+      const sys = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const mode = stored === 'light' || stored === 'dark' ? stored : sys;
+      document.documentElement.setAttribute('data-theme', mode);
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="topbar__brand" href="/">
+        <span class="topbar__brand-mark"></span>
+        HARTLE.TECH
+      </a>
+      <nav class="topbar__nav">
+        <a href="https://github.com/code-hartle-tech" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <ThemeToggle />
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>© HARTLE.TECH · Porto, PT · NIPC 518241327</span>
+      <span><a href="mailto:contact@hartle.tech">contact@hartle.tech</a></span>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in oklab, var(--surface-0) 88%, transparent);
+  border-bottom: 1px solid var(--surface-3);
+  backdrop-filter: saturate(180%) blur(12px);
+}
+.topbar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--size-3) var(--size-5);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar__brand {
+  display: inline-flex; align-items: center; gap: var(--size-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--text-1);
+}
+.topbar__brand-mark {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: conic-gradient(from 220deg, #00E5FF, #04D94F, #F2E749, #E62A28, #FF00FF, #00E5FF);
+}
+.topbar__nav {
+  display: inline-flex; align-items: center; gap: var(--size-3);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+.topbar__nav a:hover { color: var(--text-1); }
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--size-5) var(--size-5) var(--size-9);
+}
+
+.footer {
+  border-top: 1px solid var(--surface-3);
+  font-size: 0.8125rem;
+  color: var(--text-3);
+}
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--size-4) var(--size-5);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer a { color: var(--text-3); }
+.footer a:hover { color: var(--text-1); }
+</style>

@@ -1,0 +1,16 @@
+lab.hartle.tech
+Copyright 2026 HARTLE.TECH (NIPC 518241327, Porto, Portugal)
+
+The portfolio dashboard for HARTLE.TECH — products, infrastructure,
+knowledge, and source consoles in one card grid. Tailnet-only;
+served by Caddy on the VPS, deployed to k3s as a container.
+
+Contact: contact@hartle.tech
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+──────────────────────────────────────────────────────────────────────────────
+
+Per Apache License Section 4(c): any Derivative Work distributed must
+preserve this NOTICE file unchanged and surface "lab.hartle.tech —
+© HARTLE.TECH" wherever third-party attribution is displayed.

@@ -1,0 +1,19 @@
+{
+  "name": "lab-hartle-tech",
+  "version": "0.1.0",
+  "description": "lab.hartle.tech — portfolio dashboard for HARTLE.TECH's systems and products. Astro + Open Props, container-deployed to k3s.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev":     "astro dev --host 0.0.0.0 --port 5179",
+    "build":   "astro build",
+    "preview": "astro preview --host 0.0.0.0 --port 5179"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "open-props": "^1.7.0",
+    "typescript": "^5.6.0"
+  }
+}

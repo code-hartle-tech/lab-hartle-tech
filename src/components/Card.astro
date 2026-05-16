@@ -1,0 +1,193 @@
+---
+import type { CardItem } from '../data/inventory';
+
+interface Props {
+  item: CardItem;
+}
+
+const { item } = Astro.props;
+
+// Decide the canonical URL: public first, then internal, then null.
+const href = item.urlPublic ?? item.urlInternal ?? '#';
+const isInternal = !item.urlPublic && !!item.urlInternal;
+const isExternal = item.urlPublic?.startsWith('http') && !item.urlPublic.includes('hartle.tech');
+---
+
+<a
+  class="card"
+  href={href}
+  style={`--brand-accent: ${item.brandAccent};`}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+  data-tailnet-only={item.tailnetOnly ? 'true' : undefined}
+>
+  <div class="card__header">
+    <span class="card__dot" aria-hidden="true"></span>
+    <span class="card__name">{item.name}</span>
+    {item.status && item.status !== 'live' && (
+      <span class={`card__status card__status--${item.status}`}>{item.status}</span>
+    )}
+    {isInternal && (
+      <span class="card__lock" title="Tailnet-only" aria-label="Tailnet-only">⟜</span>
+    )}
+  </div>
+
+  <p class="card__tagline">{item.tagline}</p>
+
+  {item.subItems && item.subItems.length > 0 && (
+    <ul class="card__sublist">
+      {item.subItems.map((sub) => <li>{sub}</li>)}
+    </ul>
+  )}
+
+  {item.tags && item.tags.length > 0 && (
+    <div class="card__tags">
+      {item.tags.map((tag) => <span class="card__tag">{tag}</span>)}
+    </div>
+  )}
+
+  <span class="card__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-3);
+  padding: var(--size-4) var(--size-4) var(--size-4) var(--size-5);
+  background: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--text-1);
+  text-decoration: none;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* The brand-accent stripe — the ONLY brand-color surface on a card */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--brand-accent);
+  transition: width 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: color-mix(in oklab, var(--brand-accent) 30%, var(--surface-3));
+}
+
+.card:hover::before { width: 5px; }
+
+.card:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 30% 0%, color-mix(in oklab, var(--brand-accent) 12%, transparent), transparent 60%);
+  z-index: -1;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.card__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--brand-accent);
+}
+
+.card__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--text-1);
+}
+
+.card__status {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--surface-2);
+  color: var(--text-3);
+  margin-left: auto;
+}
+.card__status--wip { background: color-mix(in oklab, var(--brand-accent) 18%, var(--surface-2)); color: var(--text-1); }
+.card__status--planned { opacity: 0.6; }
+.card__status--private { opacity: 0.6; }
+
+.card__lock {
+  margin-left: auto;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.card__tagline {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  /* clamp to 2 lines for visual rhythm */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+}
+.card__sublist li { padding: 2px 0; }
+.card__sublist li::before { content: '∙ '; color: color-mix(in oklab, var(--brand-accent) 50%, var(--text-3)); }
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  color: var(--text-3);
+}
+
+.card__arrow {
+  position: absolute;
+  right: var(--size-4);
+  bottom: var(--size-3);
+  color: var(--text-3);
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.card:hover .card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--brand-accent);
+}
+</style>

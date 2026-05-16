@@ -1,0 +1,56 @@
+---
+import Card from './Card.astro';
+import type { Category } from '../data/inventory';
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<section class="category">
+  <header class="category__header">
+    <h2>{category.name}</h2>
+    {category.blurb && <span class="category__blurb">{category.blurb}</span>}
+    <span class="category__count" aria-hidden="true">{category.items.length}</span>
+  </header>
+
+  <div class="category__grid">
+    {category.items.map((item) => <Card item={item} />)}
+  </div>
+</section>
+
+<style>
+.category {
+  margin: var(--size-7) 0;
+}
+
+.category__header {
+  display: flex;
+  align-items: center;
+  gap: var(--size-3);
+  margin-bottom: var(--size-4);
+}
+
+.category__blurb {
+  font-size: 0.875rem;
+  color: var(--text-3);
+}
+
+.category__count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-3);
+  background: var(--surface-2);
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+
+.category__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--size-3);
+}
+</style>

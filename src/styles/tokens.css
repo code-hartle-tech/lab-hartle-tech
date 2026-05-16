@@ -1,0 +1,110 @@
+/* lab.hartle.tech design tokens.
+ * Two-layer system:
+ *   Layer 1 (this file): global semantic tokens for surfaces/text/borders, both modes.
+ *   Layer 2 (per-card): `--brand-accent` injected as inline style on each card.
+ *
+ * Brand colors authored in OKLCH at consistent lightness so dark/light read
+ * at equal visual weight. The brand color is NEVER used for surfaces, text,
+ * or full-opacity borders — only stripe, icon tint, low-alpha hover glow.
+ */
+
+:root {
+  /* Typography — system-stack first, JetBrains Mono for code/mono */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: 'Space Grotesk', var(--font-sans);
+
+  /* Scale */
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
+  --size-3: 0.75rem;
+  --size-4: 1rem;
+  --size-5: 1.5rem;
+  --size-6: 2rem;
+  --size-7: 3rem;
+  --size-8: 4rem;
+  --size-9: 6rem;
+
+  --radius-1: 6px;
+  --radius-2: 10px;
+  --radius-3: 14px;
+  --radius-card: 14px;
+
+  /* Light mode (default) — Layer 1 semantic tokens */
+  --surface-0: #FAFAFA;       /* page background */
+  --surface-1: #FFFFFF;       /* card surface */
+  --surface-2: #F4F4F5;       /* card hover, code blocks */
+  --surface-3: #E4E4E7;       /* borders, dividers */
+  --text-1:    #18181B;       /* primary text */
+  --text-2:    #52525B;       /* secondary text, taglines */
+  --text-3:    #71717A;       /* muted, captions, tag chips */
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 18px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* Dark mode — same token names, dark values */
+  --surface-0: #0A0A0B;
+  --surface-1: #131316;
+  --surface-2: #1C1C20;
+  --surface-3: #2A2A30;
+  --text-1:    #E8E8EA;
+  --text-2:    #B8B6BF;
+  --text-3:    #7A7980;
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0 4px 22px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.4);
+
+  color-scheme: dark;
+}
+
+/* Reset + base */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-0);
+  color: var(--text-1);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text-1);
+}
+h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+h2 { font-size: 1.125rem;
+     font-family: var(--font-mono);
+     font-weight: 500;
+     letter-spacing: 0.08em;
+     text-transform: uppercase;
+     color: var(--text-3);
+}
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+
+/* Smooth theme transitions — only on theme-aware properties */
+body, .card, h2 {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+/* Reduce motion for those who request it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* View Transition crossfade for theme toggle (Chrome/Edge) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+}

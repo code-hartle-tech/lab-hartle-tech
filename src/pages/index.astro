@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import CategorySection from '../components/CategorySection.astro';
+import { INVENTORY } from '../data/inventory';
+---
+
+<Base title="lab.hartle.tech">
+  <section class="hero">
+    <h1>The lab.</h1>
+    <p class="hero__lede">
+      Products, infrastructure, knowledge, sources — everything HARTLE.TECH ships, in one place.
+    </p>
+  </section>
+
+  {INVENTORY.map((category) => <CategorySection category={category} />)}
+</Base>
+
+<style>
+.hero {
+  padding: var(--size-6) 0 var(--size-3);
+  border-bottom: 1px solid var(--surface-3);
+  margin-bottom: var(--size-5);
+}
+.hero__lede {
+  margin-top: var(--size-3);
+  font-size: 1.0625rem;
+  color: var(--text-2);
+  max-width: 38em;
+}
+</style>

@@ -1,0 +1,18 @@
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Secrets
+.env
+.env.*
+
+# Astro
+dist/
+node_modules/
+.astro/
+
+# Claude state
+.claude/settings.local.json
+.claude/scheduled_tasks.lock

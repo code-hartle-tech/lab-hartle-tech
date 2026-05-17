@@ -308,18 +308,15 @@ export const INVENTORY: Category[] = [
         tags: ['cloud'],
         status: 'live',
       },
-    ],
-  },
-
-  {
-    name: 'Projects',
-    blurb: 'GitHub Project boards — where work lives.',
-    items: [
+      // Project boards live on GitHub and operate the same way as any
+      // other third-party console — operator decision 2026-05-17:
+      // "kanban falls under [Platforms] as well." Inherits GitHub's
+      // secondary brand color so it visually pairs with the GitHub card.
       {
         name: 'All project boards',
         tagline: 'Quest #1 · DevOps #6 · Enroll #4 · Claude Code #5 · Nosferato #2 · Medusa #8.',
         urlPublic: 'https://github.com/orgs/code-hartle-tech/projects?query=is%3Aopen+sort%3Atitle-asc',
-        brandAccent: '#2EA043', // GitHub-hosted; inherits GitHub's secondary green (matches GitHub org card)
+        brandAccent: '#2EA043', // GitHub merge-green — pairs with GitHub org card
         tags: ['kanban'],
         status: 'live',
       },

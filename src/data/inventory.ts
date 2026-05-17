@@ -263,11 +263,16 @@ export const INVENTORY: Category[] = [
     name: 'Platforms',
     blurb: 'Third-party consoles we operate through.',
     items: [
+      // Hue-spaced palette (operator decision 2026-05-17): when the
+      // primary brand color is monochrome/dark (GitHub, Tailscale) it
+      // disappears on a dark theme — fall back to a saturated SECONDARY
+      // brand color. Also nudged AWS yellow-ward to perceptually separate
+      // from Cloudflare orange.
       {
         name: 'GitHub org',
         tagline: 'Source of truth. Repos, issues, releases.',
         urlPublic: 'https://github.com/code-hartle-tech',
-        brandAccent: '#181717', // GitHub "Octocat" black — official brand color
+        brandAccent: '#2EA043', // GitHub "merge" green — saturated UI secondary
         tags: ['github'],
         status: 'live',
       },
@@ -275,7 +280,7 @@ export const INVENTORY: Category[] = [
         name: 'Tailscale admin',
         tagline: 'Mesh network admin. ACLs, machines, DNS.',
         urlPublic: 'https://login.tailscale.com/admin',
-        brandAccent: '#1F2937', // Tailscale slate — matches their minimal dark logo
+        brandAccent: '#7B58DC', // violet — secondary for monochrome logo
         tags: ['mesh'],
         status: 'live',
       },
@@ -283,7 +288,7 @@ export const INVENTORY: Category[] = [
         name: 'Cloudflare',
         tagline: 'DNS for neartrace.app + hartle.tech (managed via Terraform).',
         urlPublic: 'https://dash.cloudflare.com',
-        brandAccent: '#F38020', // Cloudflare Orange — official brand color
+        brandAccent: '#F38020', // Cloudflare Orange — official, anchor of warm slot
         tags: ['dns'],
         status: 'live',
       },
@@ -291,7 +296,7 @@ export const INVENTORY: Category[] = [
         name: 'OVH',
         tagline: 'VPS host — vps-ab94220c · Gravelines · 4 vCore / 8 GB.',
         urlPublic: 'https://www.ovh.com/manager/dedicated/index.html',
-        brandAccent: '#123F6D', // OVHcloud Blue — official brand color
+        brandAccent: '#0050D7', // OVH blue — brightened from #123F6D for theme contrast
         tags: ['vps'],
         status: 'live',
       },
@@ -299,7 +304,7 @@ export const INVENTORY: Category[] = [
         name: 'AWS',
         tagline: 'HARTLE.TECH account — burst capacity for future AI workloads.',
         urlPublic: 'https://200546423693.signin.aws.amazon.com/console',
-        brandAccent: '#FF9900', // AWS Orange — official brand color
+        brandAccent: '#FFC107', // AWS amber — shifted yellow-ward from #FF9900 to escape Cloudflare orange
         tags: ['cloud'],
         status: 'live',
       },
@@ -314,7 +319,7 @@ export const INVENTORY: Category[] = [
         name: 'All project boards',
         tagline: 'Quest #1 · DevOps #6 · Enroll #4 · Claude Code #5 · Nosferato #2 · Medusa #8.',
         urlPublic: 'https://github.com/orgs/code-hartle-tech/projects?query=is%3Aopen+sort%3Atitle-asc',
-        brandAccent: '#181717', // GitHub-hosted; inherits GitHub's brand color
+        brandAccent: '#2EA043', // GitHub-hosted; inherits GitHub's secondary green (matches GitHub org card)
         tags: ['kanban'],
         status: 'live',
       },

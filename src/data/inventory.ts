@@ -267,7 +267,7 @@ export const INVENTORY: Category[] = [
         name: 'GitHub org',
         tagline: 'Source of truth. Repos, issues, releases.',
         urlPublic: 'https://github.com/code-hartle-tech',
-        brandAccent: '#6B7280',
+        brandAccent: '#181717', // GitHub "Octocat" black — official brand color
         tags: ['github'],
         status: 'live',
       },
@@ -275,7 +275,7 @@ export const INVENTORY: Category[] = [
         name: 'Tailscale admin',
         tagline: 'Mesh network admin. ACLs, machines, DNS.',
         urlPublic: 'https://login.tailscale.com/admin',
-        brandAccent: '#6B7280',
+        brandAccent: '#1F2937', // Tailscale slate — matches their minimal dark logo
         tags: ['mesh'],
         status: 'live',
       },
@@ -283,7 +283,7 @@ export const INVENTORY: Category[] = [
         name: 'Cloudflare',
         tagline: 'DNS for neartrace.app + hartle.tech (managed via Terraform).',
         urlPublic: 'https://dash.cloudflare.com',
-        brandAccent: '#6B7280',
+        brandAccent: '#F38020', // Cloudflare Orange — official brand color
         tags: ['dns'],
         status: 'live',
       },
@@ -291,7 +291,7 @@ export const INVENTORY: Category[] = [
         name: 'OVH',
         tagline: 'VPS host — vps-ab94220c · Gravelines · 4 vCore / 8 GB.',
         urlPublic: 'https://www.ovh.com/manager/dedicated/index.html',
-        brandAccent: '#6B7280',
+        brandAccent: '#123F6D', // OVHcloud Blue — official brand color
         tags: ['vps'],
         status: 'live',
       },
@@ -299,7 +299,7 @@ export const INVENTORY: Category[] = [
         name: 'AWS',
         tagline: 'HARTLE.TECH account — burst capacity for future AI workloads.',
         urlPublic: 'https://200546423693.signin.aws.amazon.com/console',
-        brandAccent: '#6B7280',
+        brandAccent: '#FF9900', // AWS Orange — official brand color
         tags: ['cloud'],
         status: 'live',
       },
@@ -314,7 +314,7 @@ export const INVENTORY: Category[] = [
         name: 'All project boards',
         tagline: 'Quest #1 · DevOps #6 · Enroll #4 · Claude Code #5 · Nosferato #2 · Medusa #8.',
         urlPublic: 'https://github.com/orgs/code-hartle-tech/projects',
-        brandAccent: '#6B7280',
+        brandAccent: '#181717', // GitHub-hosted; inherits GitHub's brand color
         tags: ['kanban'],
         status: 'live',
       },

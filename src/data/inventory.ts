@@ -198,25 +198,10 @@ export const INVENTORY: Category[] = [
         status: 'wip',
         tailnetOnly: true,
       },
-      // ── neartrace.app (consumer production surface) ─────────────
-      {
-        name: 'neartrace.app docs',
-        tagline: 'Public consumer docs (promoted from hartle.tech on release).',
-        urlPublic: 'https://docs.neartrace.app',
-        brandAccent: '#00E5FF',
-        tags: ['vitepress', 'public', 'consumer'],
-        status: 'live',
-      },
-      {
-        name: 'neartrace.app wiki',
-        tagline: 'Tailnet consumer wiki (promoted from hartle.tech on release).',
-        urlInternal: 'https://wiki.neartrace.app',
-        brandAccent: '#00E5FF',
-        tags: ['vitepress', 'wiki', 'consumer'],
-        status: 'live',
-        tailnetOnly: true,
-        subItems: ['Legacy alias: void.neartrace.app'],
-      },
+      // neartrace.app docs/wiki intentionally NOT listed here — they're
+      // downstream copies promoted from neartrace.hartle.tech on release.
+      // The hartle.tech-side cards above are the single source of truth.
+
       // ── Medusa ──────────────────────────────────────────────────
       {
         name: 'Medusa docs',

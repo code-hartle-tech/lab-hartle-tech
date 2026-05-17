@@ -313,7 +313,7 @@ export const INVENTORY: Category[] = [
       {
         name: 'All project boards',
         tagline: 'Quest #1 · DevOps #6 · Enroll #4 · Claude Code #5 · Nosferato #2 · Medusa #8.',
-        urlPublic: 'https://github.com/orgs/code-hartle-tech/projects',
+        urlPublic: 'https://github.com/orgs/code-hartle-tech/projects?query=is%3Aopen+sort%3Atitle-asc',
         brandAccent: '#181717', // GitHub-hosted; inherits GitHub's brand color
         tags: ['kanban'],
         status: 'live',

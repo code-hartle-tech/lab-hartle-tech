@@ -35,6 +35,14 @@ export const INVENTORY: Category[] = [
     blurb: "What we're shipping.",
     items: [
       {
+        name: 'hartle.tech',
+        tagline: 'The org itself — marketing landing for HARTLE.TECH.',
+        urlPublic: 'https://hartle.tech',
+        brandAccent: '#00E5FF',
+        tags: ['netlify', 'marketing'],
+        status: 'live',
+      },
+      {
         name: 'NearTrace',
         tagline: 'Android BLE scanner. Forensic-grade nearby-device discovery.',
         urlPublic: 'https://neartrace.app',
@@ -63,10 +71,7 @@ export const INVENTORY: Category[] = [
       {
         name: 'Nosferato',
         tagline: 'NOT-SAFE-FOR-APP-STORES Pi rig. Vampire-hacker-rat lane.',
-        // Landing site not yet shipped; the card stays card-only (no link)
-        // until nosferato.hartle.tech is up. Don't surface a GitHub URL
-        // here — that breaks the per-product brand surface the lab tries
-        // to project. Operator decision 2026-05-17.
+        urlPublic: 'https://nosferato.hartle.tech',
         brandAccent: '#FF00FF',
         tags: ['pi-zero-2w', 'nsfas'],
         status: 'wip',
@@ -147,14 +152,6 @@ export const INVENTORY: Category[] = [
     blurb: 'Where the knowledge lives. Convention: public = docs, tailnet-only = wiki.',
     items: [
       // ── Org-wide ────────────────────────────────────────────────
-      {
-        name: 'hartle.tech',
-        tagline: 'Org marketing site.',
-        urlPublic: 'https://hartle.tech',
-        brandAccent: '#00E5FF',
-        tags: ['netlify', 'marketing'],
-        status: 'live',
-      },
       {
         name: 'docs.hartle.tech',
         tagline: 'Public engineering docs (architecture, integration guides, products).',

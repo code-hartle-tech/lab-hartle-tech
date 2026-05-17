@@ -61,18 +61,12 @@ export const INVENTORY: Category[] = [
         status: 'live',
       },
       {
-        name: 'tools.hartle.tech',
-        tagline: 'Per-tool reference docs and hands-on lessons. RuFlo first, more incoming.',
-        urlPublic: 'https://tools.hartle.tech',
-        urlInternal: 'https://tools.hartle.tech/ruflo/wiki/',
-        brandAccent: '#1E40AF',
-        tags: ['docs', 'cheatsheets'],
-        status: 'live',
-      },
-      {
         name: 'Nosferato',
         tagline: 'NOT-SAFE-FOR-APP-STORES Pi rig. Vampire-hacker-rat lane.',
-        urlPublic: 'https://github.com/code-hartle-tech/nosferatos',
+        // Landing site not yet shipped; the card stays card-only (no link)
+        // until nosferato.hartle.tech is up. Don't surface a GitHub URL
+        // here — that breaks the per-product brand surface the lab tries
+        // to project. Operator decision 2026-05-17.
         brandAccent: '#FF00FF',
         tags: ['pi-zero-2w', 'nsfas'],
         status: 'wip',
@@ -85,23 +79,24 @@ export const INVENTORY: Category[] = [
     blurb: 'The plumbing.',
     items: [
       {
-        name: 'Cortex',
-        tagline: 'Secrets vault (OpenBao). Every credential lives here.',
-        urlInternal: 'https://cortex.hartle.tech',
+        name: 'OpenBao',
+        tagline: 'Secrets vault. Every credential lives here.',
+        urlInternal: 'https://openbao.hartle.tech',
         brandAccent: '#00F0FF',
-        tags: ['openbao', 'k3s'],
+        tags: ['secrets', 'k3s'],
         status: 'live',
         tailnetOnly: true,
-        subItems: ['Legacy alias: bao.hartle.tech (parallel during rebrand)'],
+        subItems: ['Legacy aliases: cortex / bao .hartle.tech'],
       },
       {
         name: 'Headlamp',
         tagline: 'k3s control plane. Pods, services, helmreleases.',
-        urlInternal: 'https://k8s.hartle.tech',
+        urlInternal: 'https://headlamp.hartle.tech',
         brandAccent: '#326CE5',
         tags: ['k3s', 'cluster-admin'],
         status: 'live',
         tailnetOnly: true,
+        subItems: ['Legacy alias: k8s.hartle.tech'],
       },
       {
         name: 'Flux',
@@ -119,14 +114,14 @@ export const INVENTORY: Category[] = [
     name: 'Identity & Auth',
     items: [
       {
-        name: 'Bouncer',
-        tagline: 'Identity provider (Authentik). Decides who gets in.',
-        urlInternal: 'https://bouncer.hartle.tech',
-        brandAccent: '#00F0FF',
-        tags: ['authentik', 'oidc'],
+        name: 'Authentik',
+        tagline: 'Identity provider. Decides who gets in.',
+        urlInternal: 'https://authentik.hartle.tech',
+        brandAccent: '#FD4B2D',
+        tags: ['oidc', 'sso'],
         status: 'live',
         tailnetOnly: true,
-        subItems: ['Legacy alias: auth.hartle.tech (parallel during rebrand)'],
+        subItems: ['Legacy aliases: bouncer / auth .hartle.tech'],
       },
     ],
   },
@@ -151,6 +146,15 @@ export const INVENTORY: Category[] = [
     name: 'Documentation',
     blurb: 'Where the knowledge lives.',
     items: [
+      {
+        name: 'tools.hartle.tech',
+        tagline: 'Per-tool reference docs and hands-on lessons. RuFlo first, more incoming.',
+        urlPublic: 'https://tools.hartle.tech',
+        urlInternal: 'https://tools.hartle.tech/ruflo/wiki/',
+        brandAccent: '#1E40AF',
+        tags: ['docs', 'cheatsheets'],
+        status: 'live',
+      },
       {
         name: 'Void wiki',
         tagline: 'Org-wide internal wiki. Runbooks, decisions, lore.',

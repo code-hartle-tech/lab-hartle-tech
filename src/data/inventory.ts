@@ -156,20 +156,30 @@ export const INVENTORY: Category[] = [
         status: 'live',
       },
       {
-        name: 'Void wiki',
+        name: 'Wiki',
         tagline: 'Org-wide internal wiki. Runbooks, decisions, lore.',
-        urlInternal: 'https://void.hartle.tech',
+        urlInternal: 'https://wiki.hartle.tech',
         brandAccent: '#00F0FF',
         tags: ['vitepress', 'internal'],
         status: 'live',
         tailnetOnly: true,
+        subItems: ['Legacy alias: void.hartle.tech'],
       },
       {
         name: 'NearTrace docs',
-        tagline: 'Public NearTrace user and developer docs.',
+        tagline: 'NearTrace engineering surface (landing, docs, wiki).',
+        urlInternal: 'https://neartrace.hartle.tech',
+        brandAccent: '#00E5FF',
+        tags: ['vitepress', 'tailnet'],
+        status: 'wip',
+        tailnetOnly: true,
+      },
+      {
+        name: 'neartrace.app docs',
+        tagline: 'Public NearTrace user + developer docs (consumer-side).',
         urlPublic: 'https://docs.neartrace.app',
         brandAccent: '#00E5FF',
-        tags: ['vitepress', 'public'],
+        tags: ['vitepress', 'consumer'],
         status: 'live',
       },
       {
@@ -184,23 +194,15 @@ export const INVENTORY: Category[] = [
   },
 
   {
-    name: 'External / Source',
+    name: 'Platforms',
     blurb: 'Third-party consoles we operate through.',
     items: [
       {
         name: 'GitHub org',
-        tagline: 'Source of truth. Repos, issues, projects, releases.',
+        tagline: 'Source of truth. Repos, issues, releases.',
         urlPublic: 'https://github.com/code-hartle-tech',
         brandAccent: '#6B7280',
         tags: ['github'],
-        status: 'live',
-      },
-      {
-        name: 'GitHub Projects',
-        tagline: 'Quest Board #1, DevOps #6, Enroll #4, Claude Code #5, Nosferato #2, Medusa #8.',
-        urlPublic: 'https://github.com/orgs/code-hartle-tech/projects',
-        brandAccent: '#6B7280',
-        tags: ['kanban'],
         status: 'live',
       },
       {
@@ -233,6 +235,21 @@ export const INVENTORY: Category[] = [
         urlPublic: 'https://200546423693.signin.aws.amazon.com/console',
         brandAccent: '#6B7280',
         tags: ['cloud'],
+        status: 'live',
+      },
+    ],
+  },
+
+  {
+    name: 'Projects',
+    blurb: 'GitHub Project boards — where work lives.',
+    items: [
+      {
+        name: 'All project boards',
+        tagline: 'Quest #1 · DevOps #6 · Enroll #4 · Claude Code #5 · Nosferato #2 · Medusa #8.',
+        urlPublic: 'https://github.com/orgs/code-hartle-tech/projects',
+        brandAccent: '#6B7280',
+        tags: ['kanban'],
         status: 'live',
       },
     ],
